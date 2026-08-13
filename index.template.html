@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>寸金平台 - AI 赋能企业底层流程 | 产品宣传册</title>
+<meta name="description" content="寸金平台（CUNJIN）以 AI 重构企业底层流程，覆盖高约束对象建模、插件化能力封装、智能办公助理与三维智能设计，面向国防科技与高端制造领域提供安全可控的 AI 工程化平台。">
+<meta name="theme-color" content="#0a1628">
+<meta name="author" content="寸金智能">
+<link rel="canonical" href="https://www.aibasedplay.com/">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<!-- Open Graph / 社交分享卡片 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="寸金平台 - AI 赋能企业底层流程">
+<meta property="og:description" content="以 AI 重构企业底层流程，面向国防科技与高端制造的安全可控 AI 工程化平台。">
+<meta property="og:url" content="https://www.aibasedplay.com/">
+<meta property="og:image" content="https://www.aibasedplay.com/img/product_cjontology.png">
+<meta property="og:site_name" content="寸金平台">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.loli.net/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/content.css">
+<link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+<nav class="site-nav" aria-label="站点导航">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#cover">寸金平台</a>
+    <div class="nav-links">
+      <a href="#overview-1">总览</a>
+      <a href="#prod-cjontology">CJOntology</a>
+      <a href="#prod-cjplug">CJPlug</a>
+      <a href="#prod-abwork">ABWork</a>
+      <a href="#prod-3d">3D 设计</a>
+      <a href="#cases">项目案例</a>
+      <a href="#clients">合作客户</a>
+      <a href="#backcover">封底</a>
+    </div>
+  </div>
+</nav>
+
+<!-- BUILD:PAGES -->
+
+<!-- Floating PDF Download Button -->
+<button class="fab-pdf" onclick="downloadPDF()" title="下载 PDF" aria-label="下载 PDF 手册">
+  <span class="fab-tooltip">下载 PDF</span>
+  <svg viewBox="0 0 24 24">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+    <polyline points="7 10 12 15 17 10"/>
+    <line x1="12" y1="15" x2="12" y2="3"/>
+  </svg>
+</button>
+
+<!-- PDF Toast -->
+<div class="pdf-toast" id="pdfToast">
+  <span class="toast-spinner" id="toastSpinner"></span>
+  <span class="toast-icon" id="toastIcon" style="display:none;"></span>
+  <span id="toastMsg">正在生成 PDF...</span>
+</div>
+
+<script src="js/responsive.js"></script>
+<script src="js/pdf.js"></script>
+
+</body>
+</html>

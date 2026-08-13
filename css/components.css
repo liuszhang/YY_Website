@@ -1,0 +1,158 @@
+/* ==================== FLOATING PDF BUTTON ==================== */
+.fab-pdf {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 9999;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #0088cc, #005fa3);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0,100,200,0.4), 0 2px 8px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.fab-pdf:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(0,100,200,0.55), 0 3px 12px rgba(0,0,0,0.2);
+}
+.fab-pdf:active {
+  transform: scale(0.95);
+}
+.fab-pdf svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.fab-pdf .fab-tooltip {
+  position: absolute;
+  right: 68px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(20,30,50,0.9);
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.fab-pdf:hover .fab-tooltip {
+  opacity: 1;
+}
+
+/* ==================== PDF TOAST ==================== */
+.pdf-toast {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-80px);
+  z-index: 10000;
+  background: rgba(20,30,50,0.92);
+  color: #fff;
+  font-size: 14px;
+  padding: 14px 28px;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), opacity 0.4s;
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0,180,255,0.2);
+}
+.pdf-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+.pdf-toast .toast-spinner {
+  width: 18px; height: 18px;
+  border: 2px solid rgba(255,255,255,0.25);
+  border-top-color: #00d4ff;
+  border-radius: 50%;
+  animation: toastSpin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+.pdf-toast .toast-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+@keyframes toastSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ==================== PRINT ==================== */
+@media print {
+  .fab-pdf { display: none !important; }
+  .pdf-toast { display: none !important; }
+  #brochure { zoom: 1 !important; }
+}
+
+/* ==================== ACCESSIBILITY ==================== */
+/* 键盘聚焦可见：让 Tab 到 FAB / 按钮 / 链接时有清晰焦点环 */
+.fab-pdf:focus-visible {
+  outline: 3px solid #00d4ff;
+  outline-offset: 3px;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+}
+
+/* ==================== SITE NAV (left floating group, no panel) ==================== */
+/* 图册整体居中，左右留白即深色 body 背景，菜单直接悬浮其上，无需底色面板。 */
+.site-nav {
+  position: fixed; left: 56px; top: 50%; transform: translateY(-50%);
+  z-index: 9998; width: auto;
+  display: flex; flex-direction: column;
+}
+.site-nav .nav-inner {
+  display: flex; flex-direction: column; gap: 14px;
+}
+.site-nav .nav-brand {
+  font-size: 15px; font-weight: 800; color: #e8f3ff; letter-spacing: 1px;
+  text-decoration: none; white-space: nowrap;
+  padding: 0 0 10px; margin-bottom: 2px;
+  border-bottom: 1px solid rgba(0,180,255,0.2);
+}
+.site-nav .nav-links { display: flex; flex-direction: column; gap: 4px; }
+.site-nav .nav-links a {
+  position: relative;
+  font-size: 13px; color: rgba(200,225,255,0.7); text-decoration: none;
+  padding: 5px 0 5px 16px; white-space: nowrap;
+  transition: color .15s, transform .15s;
+}
+/* 悬浮小圆点作菜单指示，默认空心，hover 才亮起——无底色 */
+.site-nav .nav-links a::before {
+  content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  width: 6px; height: 6px; border-radius: 50%;
+  border: 1px solid rgba(0,180,255,0.5); background: transparent;
+  transition: background .15s, border-color .15s;
+}
+.site-nav .nav-links a:hover { color: #fff; transform: translateX(3px); }
+.site-nav .nav-links a:hover::before { background: #00d4ff; border-color: #00d4ff; }
+.site-nav .nav-links a:focus-visible { outline: 2px solid #00d4ff; outline-offset: 3px; border-radius: 3px; }
+html { scroll-behavior: smooth; scroll-padding-top: 0; }
+.page { scroll-margin-top: 0; }
+/* 视口不足以同时放下菜单与居中图册时，隐藏悬浮菜单以免遮挡页面 */
+@media (max-width: 1120px) {
+  .site-nav { display: none !important; }
+}
+@media print {
+  .site-nav { display: none !important; }
+  html { scroll-behavior: auto; }
+}
