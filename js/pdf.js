@@ -214,7 +214,7 @@ function generatePDF(btn) {
       });
       if (wrap) wrap.style.zoom = prevZoom || '';
       showToast('PDF 生成完成，正在下载...', true);
-      pdf.save('寸金平台-产品手册.pdf');
+      pdf.save('元域智慧-产品手册.pdf');
       setTimeout(function () {
         hideToast();
         if (btn) btn.style.display = '';
